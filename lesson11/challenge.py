@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
 class Person (ABC):
-    def __init__(self, name,age,height,weight):
+    def __init__(self, name,age,height,weight): #konstruktori
         self.name=name
         self.age=age
-        self.height=height
-        self.weight=weight
+        self._height=height
+        self._weight=weight
     @property
     def name(self):
         return self._name
@@ -33,5 +33,9 @@ class adult(Person):
         return self.weight \ (self.height ** 2)
     def get_bmi_category(self):
         bmi= self.calculate_bmi()
-        if bmi 
+        if bmi < 18.5
+            return ("Underweight")
+        elif 18.5<=bmi<24.9
+            return "Normal weight"
+        elif
 
