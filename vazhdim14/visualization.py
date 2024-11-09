@@ -1,5 +1,6 @@
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
+
 df=pd.read_csv('avgIQpercountry.csv')
 filtered=df[df["Average IQ"]>100]
 filtered=filtered.sort_values(by=['Average IQ'],ascending=False)
