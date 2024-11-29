@@ -46,4 +46,10 @@ def create_category(category:CategoryCreate):
         conn.commit()
         category_id= cursor.lastrowid
         return category(id=category_id, name= category.name)
-    
+    except sqlite3.IntegrityError:
+        conn.close()
+        raise HTTPException(
+            status_code= status.HTTP_409_CONFLIT,
+            details=f"The category {category.name} already exists"
+        )
+
