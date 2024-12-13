@@ -34,7 +34,7 @@ def insert_authors(authors, cursor):
         insert or ignore into authors (name) values (?)
         ''',(author,))
         cursor.execute("select id from authors where name=?",(author,) )
-        author_ids[author]==cursor.fetchone()[0]
+        authors_ids[author]==cursor.fetchone()[0]
         return authors_ids
 
 def insert_books(books_dictionary,authors_ids, cursor):
@@ -51,10 +51,10 @@ def insert_data(books_dict, authors):
     conn.commit()
     conn.close()
 
-if __name__="__main__":
+if __name__=="__main__":
     from book_scraper import scrape_books
     books_dictionary, authors=scrape_books()
     insert_data(books_dictionary,authors )
-    
+
 
 
